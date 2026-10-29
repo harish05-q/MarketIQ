@@ -43,7 +43,7 @@ export function Header() {
     setIsRefreshing(true);
     // Simulate refresh trigger
     try {
-      await fetch("http://localhost:8000/api/v1/ingest", { method: "POST" });
+      await fetch("/api/v1/ingest", { method: "POST" });
     } catch {}
     setTimeout(() => {
       setIsRefreshing(false);
