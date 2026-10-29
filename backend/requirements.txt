@@ -1,0 +1,43 @@
+# FastAPI & Server
+fastapi==0.115.6
+uvicorn==0.34.0
+httptools==0.6.4
+python-multipart==0.0.20
+
+# Database
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+aiosqlite==0.20.0
+alembic==1.14.1
+
+# Pydantic
+pydantic==2.10.4
+pydantic-settings==2.7.1
+
+# Kafka
+confluent-kafka==2.6.1
+
+# Vector Database
+qdrant-client==1.12.1
+
+# LLM & Embeddings
+langchain-groq==0.2.4
+langchain-core==0.3.33
+sentence-transformers==3.3.1
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
+
+# RSS Parsing
+feedparser==6.0.11
+
+# HTTP
+httpx==0.28.1
+aiohttp==3.11.11
+
+# Utilities
+python-dateutil==2.9.0
+python-dotenv==1.0.1
+tenacity==9.0.0
+structlog==24.4.0
+orjson==3.10.13
+numpy==2.2.1
