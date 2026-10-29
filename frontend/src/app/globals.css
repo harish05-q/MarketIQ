@@ -1,0 +1,445 @@
+@import "tailwindcss";
+
+/* ============================================
+   MarketIQ Design System
+   Bloomberg Terminal + Linear + Perplexity
+   Warm earthy dark theme
+   ============================================ */
+
+@theme inline {
+  /* === Color Palette === */
+  --color-silk: #F5F0EB;
+  --color-silk-muted: #E8E0D8;
+  --color-ash: #3D3A37;
+  --color-ash-deep: #2A2725;
+  --color-ash-light: #5A5551;
+  --color-granite: #7A746D;
+  --color-granite-light: #9E978F;
+  --color-caramel: #C4956A;
+  --color-caramel-warm: #D4A574;
+  --color-caramel-deep: #A67B52;
+  --color-positive: #7DB87D;
+  --color-negative: #C47A6E;
+  --color-neutral-sent: #B8A88A;
+  --color-warning: #D4A33E;
+
+  /* === Semantic Mappings === */
+  --color-background: var(--color-ash-deep);
+  --color-foreground: var(--color-silk);
+  --color-card: rgba(61, 58, 55, 0.6);
+  --color-card-foreground: var(--color-silk);
+  --color-primary: var(--color-caramel);
+  --color-primary-foreground: var(--color-ash-deep);
+  --color-secondary: var(--color-ash-light);
+  --color-secondary-foreground: var(--color-silk-muted);
+  --color-muted: var(--color-ash);
+  --color-muted-foreground: var(--color-granite-light);
+  --color-accent: var(--color-caramel);
+  --color-accent-foreground: var(--color-ash-deep);
+  --color-destructive: var(--color-negative);
+  --color-border: rgba(245, 240, 235, 0.08);
+  --color-input: rgba(245, 240, 235, 0.06);
+  --color-ring: var(--color-caramel);
+  --color-surface: var(--color-ash);
+  --color-surface-hover: var(--color-ash-light);
+
+  /* === Typography === */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* === Radius === */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+  --radius-full: 9999px;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ash-light) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-ash-light);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-granite);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-ash-deep);
+  color: var(--color-silk);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Glassmorphism Components
+   ============================================ */
+
+.glass-card {
+  background: rgba(61, 58, 55, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 240, 235, 0.08);
+  border-radius: var(--radius-lg);
+  transition: all 0.25s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(196, 149, 106, 0.2);
+  box-shadow: 0 0 20px rgba(196, 149, 106, 0.05);
+}
+
+.glass-card-static {
+  background: rgba(61, 58, 55, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(245, 240, 235, 0.08);
+  border-radius: var(--radius-lg);
+}
+
+.glass-surface {
+  background: rgba(61, 58, 55, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245, 240, 235, 0.05);
+}
+
+.glass-sidebar {
+  background: rgba(42, 39, 37, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(245, 240, 235, 0.06);
+}
+
+.glass-header {
+  background: rgba(42, 39, 37, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(245, 240, 235, 0.06);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 4px rgba(196, 149, 106, 0.1); }
+  50% { box-shadow: 0 0 16px rgba(196, 149, 106, 0.2); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes typing {
+  0%, 60% { opacity: 1; }
+  61%, 100% { opacity: 0; }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.4s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(245, 240, 235, 0.05), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-count-up {
+  animation: countUp 0.6s ease-out forwards;
+}
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+
+/* ============================================
+   Typography Utilities
+   ============================================ */
+
+.font-data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.text-gradient-caramel {
+  background: linear-gradient(135deg, var(--color-caramel), var(--color-caramel-warm));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   Sentiment Badge Colors
+   ============================================ */
+
+.sentiment-positive {
+  color: var(--color-positive);
+  background: rgba(125, 184, 125, 0.12);
+  border: 1px solid rgba(125, 184, 125, 0.2);
+}
+
+.sentiment-negative {
+  color: var(--color-negative);
+  background: rgba(196, 122, 110, 0.12);
+  border: 1px solid rgba(196, 122, 110, 0.2);
+}
+
+.sentiment-neutral {
+  color: var(--color-neutral-sent);
+  background: rgba(184, 168, 138, 0.12);
+  border: 1px solid rgba(184, 168, 138, 0.2);
+}
+
+/* ============================================
+   Impact Severity
+   ============================================ */
+
+.impact-critical {
+  color: var(--color-negative);
+  border-color: rgba(196, 122, 110, 0.3);
+}
+
+.impact-high {
+  color: var(--color-warning);
+  border-color: rgba(212, 163, 62, 0.3);
+}
+
+.impact-medium {
+  color: var(--color-caramel);
+  border-color: rgba(196, 149, 106, 0.3);
+}
+
+.impact-low {
+  color: var(--color-granite-light);
+  border-color: rgba(158, 151, 143, 0.3);
+}
+
+/* ============================================
+   Interactive States
+   ============================================ */
+
+.interactive {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.interactive:hover {
+  transform: translateY(-1px);
+}
+
+.interactive:active {
+  transform: translateY(0);
+}
+
+/* Button primary variant */
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-caramel), var(--color-caramel-deep));
+  color: var(--color-ash-deep);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-caramel-warm), var(--color-caramel));
+  box-shadow: 0 4px 12px rgba(196, 149, 106, 0.25);
+}
+
+/* Ghost button */
+.btn-ghost {
+  color: var(--color-granite-light);
+  transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+  color: var(--color-silk);
+  background: rgba(245, 240, 235, 0.05);
+}
+
+/* ============================================
+   Skeleton Loading
+   ============================================ */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(61, 58, 55, 0.6) 25%,
+    rgba(90, 85, 81, 0.4) 50%,
+    rgba(61, 58, 55, 0.6) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ============================================
+   Chat Specific
+   ============================================ */
+
+.chat-bubble-user {
+  background: rgba(196, 149, 106, 0.15);
+  border: 1px solid rgba(196, 149, 106, 0.2);
+  border-radius: var(--radius-lg) var(--radius-lg) 4px var(--radius-lg);
+}
+
+.chat-bubble-assistant {
+  background: rgba(61, 58, 55, 0.6);
+  border: 1px solid rgba(245, 240, 235, 0.08);
+  border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 4px;
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin: 0 2px;
+  background: var(--color-caramel);
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+/* ============================================
+   Heatmap Grid
+   ============================================ */
+
+.heatmap-cell {
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* ============================================
+   Timeline
+   ============================================ */
+
+.timeline-line {
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    rgba(196, 149, 106, 0.3),
+    rgba(196, 149, 106, 0.05)
+  );
+}
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-caramel);
+  box-shadow: 0 0 8px rgba(196, 149, 106, 0.3);
+}
+
+/* ============================================
+   Recharts Overrides
+   ============================================ */
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(245, 240, 235, 0.04) !important;
+}
+
+.recharts-text {
+  fill: var(--color-granite) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+}
+
+.recharts-tooltip-wrapper {
+  outline: none !important;
+}
+
+/* ============================================
+   Page Transition
+   ============================================ */
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease-out;
+}
